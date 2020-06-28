@@ -184,7 +184,7 @@ object, which must be an <code>Enumerable</code>.</p>
   </h2>
   
     
-      <a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L9" target="_blank">
+      <a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L9" target="_blank">
         commands.cr
       </a>
     
@@ -315,7 +315,21 @@ object, which must be an <code>Enumerable</code>.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#xadd(key:String,id:String,maxlen=nil,data:Hash(String,String)=Hash(String,String).new)-instance-method" class="signature"><strong>#xadd</strong>(key : String, id : String, maxlen = <span class="n">nil</span>, data : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>)</a>
+        <a href="#xadd(key:String,id:String,maxlen,data:Hash(String,String))-instance-method" class="signature"><strong>#xadd</strong>(key : String, id : String, maxlen, data : Hash(String, String))</a>
+        
+          <div class="summary"><p>Append an entry with the specified data to the stream with the given <code>key</code> and gives it the specified <code>id</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xadd(key:String,id:String,data:Hash(String,String))-instance-method" class="signature"><strong>#xadd</strong>(key : String, id : String, data : Hash(String, String))</a>
+        
+          <div class="summary"><p>Append an entry with the specified data to the stream with the given <code>key</code> and gives it the specified <code>id</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xadd(key:String,id:String,maxlen=nil,**data)-instance-method" class="signature"><strong>#xadd</strong>(key : String, id : String, maxlen = <span class="n">nil</span>, **data)</a>
         
           <div class="summary"><p>Append an entry with the specified data to the stream with the given <code>key</code> and gives it the specified <code>id</code>.</p></div>
         
@@ -405,7 +419,7 @@ redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</s
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L206" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L206" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -435,7 +449,7 @@ redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</s
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L189" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L189" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -465,7 +479,7 @@ redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</s
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L173" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -490,7 +504,7 @@ redis.decr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; -1
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L85" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L85" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -515,7 +529,7 @@ redis.decrby <span class="s">&quot;counter&quot;</span>, <span class="n">2</span
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L107" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -540,7 +554,7 @@ redis.del <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L118" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L118" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -564,7 +578,7 @@ redis.get(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; &quot;
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -589,7 +603,7 @@ redis.incr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 1<
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -614,7 +628,7 @@ redis.incrby <span class="s">&quot;counter&quot;</span>, <span class="n">2</span
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L96" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L96" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -642,7 +656,7 @@ redis.keys(<span class="s">&quot;b*&quot;</span>) <span class="c"># =&gt; [&quot
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -668,7 +682,7 @@ redis.lpush <span class="s">&quot;my-list&quot;</span>, <span class="s">&quot;fo
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L130" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L130" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -694,7 +708,7 @@ redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</s
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L157" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L157" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -723,7 +737,7 @@ redis.rpoplpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;ba
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L145" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L145" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -747,7 +761,7 @@ must be an <code>Enumerable</code> and its <code>size</code> method must be re-e
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L16" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -775,17 +789,17 @@ redis.get(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; nil</s
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L46" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="xadd(key:String,id:String,maxlen=nil,data:Hash(String,String)=Hash(String,String).new)-instance-method">
+    <div class="entry-detail" id="xadd(key:String,id:String,maxlen,data:Hash(String,String))-instance-method">
       <div class="signature">
         
-        def <strong>xadd</strong>(key : String, id : String, maxlen = <span class="n">nil</span>, data : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>)
+        def <strong>xadd</strong>(key : String, id : String, maxlen, data : Hash(String, String))
 
-        <a class="method-permalink" href="#xadd(key:String,id:String,maxlen=nil,data:Hash(String,String)=Hash(String,String).new)-instance-method">#</a>
+        <a class="method-permalink" href="#xadd(key:String,id:String,maxlen,data:Hash(String,String))-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -804,7 +818,65 @@ efficiently. This method returns the <code>id</code> that Redis stores.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L244" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L259" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xadd(key:String,id:String,data:Hash(String,String))-instance-method">
+      <div class="signature">
+        
+        def <strong>xadd</strong>(key : String, id : String, data : Hash(String, String))
+
+        <a class="method-permalink" href="#xadd(key:String,id:String,data:Hash(String,String))-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Append an entry with the specified data to the stream with the given <code>key</code>
+and gives it the specified <code>id</code>. If the id is <code>"*"</code>, Redis will assign it
+an id of the form <code>"#{Time.utc.to_unix_ms}-#{autoincrementing_index}"</code>.
+If <code>maxlen</code> is provided, Redis will trim the stream to the specified
+length. If <code>maxlen</code> is of the form <code>~ 1000</code>, Redis will trim it to
+<em>approximately</em> that length, removing entries when it can do so
+efficiently. This method returns the <code>id</code> that Redis stores.</p>
+
+<pre><code>redis.xadd <span class="s">&quot;my-stream&quot;</span>, <span class="s">&quot;*&quot;</span>, {<span class="s">&quot;name&quot;</span> => <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;id&quot;</span> => <span class="t">UUID</span>.random.to_s}</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L244" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xadd(key:String,id:String,maxlen=nil,**data)-instance-method">
+      <div class="signature">
+        
+        def <strong>xadd</strong>(key : String, id : String, maxlen = <span class="n">nil</span>, **data)
+
+        <a class="method-permalink" href="#xadd(key:String,id:String,maxlen=nil,**data)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Append an entry with the specified data to the stream with the given <code>key</code>
+and gives it the specified <code>id</code>. If the id is <code>"*"</code>, Redis will assign it
+an id of the form <code>"#{Time.utc.to_unix_ms}-#{autoincrementing_index}"</code>.
+If <code>maxlen</code> is provided, Redis will trim the stream to the specified
+length. If <code>maxlen</code> is of the form <code>~ 1000</code>, Redis will trim it to
+<em>approximately</em> that length, removing entries when it can do so
+efficiently. This method returns the <code>id</code> that Redis stores.</p>
+
+<pre><code>redis.xadd <span class="s">&quot;my-stream&quot;</span>, <span class="s">&quot;*&quot;</span>, name: <span class="s">&quot;foo&quot;</span>, id: <span class="t">UUID</span>.random.to_s</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L221" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -827,7 +899,7 @@ efficiently. This method returns the <code>id</code> that Redis stores.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L277" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L292" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -850,7 +922,7 @@ efficiently. This method returns the <code>id</code> that Redis stores.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L286" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L301" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -871,7 +943,7 @@ efficiently. This method returns the <code>id</code> that Redis stores.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L272" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -893,7 +965,7 @@ If <code>count</code> is provided, Redis will return only that number of entries
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L263" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L278" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -917,7 +989,7 @@ heterogeneous arrays aren't easy to work with.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L294" target="_blank">View source</a>]
+          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/commands.cr#L309" target="_blank">View source</a>]
         
       </div>
     </div>
