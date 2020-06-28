@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="crystal_docs.project_version" content="master">
+<meta name="crystal_docs.project_name" content="redis">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="redis">
+  <title>redis master</title>
+  <script type="text/javascript">
+  CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          redis
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="redis/Redis" data-name="redis">
+      <a href="Redis.html">Redis</a>
+      
+        <ul>
+  
+  <li class=" " data-id="redis/Redis/Client" data-name="redis::client">
+      <a href="Redis/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Commands" data-name="redis::commands">
+      <a href="Redis/Commands.html">Commands</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Connection" data-name="redis::connection">
+      <a href="Redis/Connection.html">Connection</a>
+      
+    </li>
+  
+  <li class="parent " data-id="redis/Redis/Future" data-name="redis::future">
+      <a href="Redis/Future.html">Future</a>
+      
+        <ul>
+  
+  <li class=" " data-id="redis/Redis/Future/NotResolved" data-name="redis::future::notresolved">
+      <a href="Redis/Future/NotResolved.html">NotResolved</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Parser" data-name="redis::parser">
+      <a href="Redis/Parser.html">Parser</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Pipeline" data-name="redis::pipeline">
+      <a href="Redis/Pipeline.html">Pipeline</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Transaction" data-name="redis::transaction">
+      <a href="Redis/Transaction.html">Transaction</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Value" data-name="redis::value">
+      <a href="Redis/Value.html">Value</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1><a id="redis" class="anchor" href="#redis">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>redis</h1>
+
+<p>A pure-Crystal implementation of the Redis protocol</p>
+
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
+
+<ol><li>Add the dependency to your <code>shard.yml</code>:</li></ol>
+
+<p><code></code>`yaml
+   dependencies:</p>
+
+<pre><code> redis:
+   github: jgaskins<span class="s">/redis</span></code></pre>
+
+<p><code></code>`</p>
+
+<p>Note that this shard currently depends on a fork of <code>crystal-db</code> for its connection pool. I'm in the process of getting those changes merged upstream so it can depend on the mainline implementation of that shard.</p>
+
+<ol><li>Run <code>shards</code></li></ol>
+
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;redis&quot;</span>
+
+redis <span class="o">=</span> <span class="t">Redis</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span> <span class="c"># Defaults to `localhost` port 6379</span>
+
+redis.set <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>
+redis.get <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;bar&quot;</span>
+
+redis.incr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 1</span>
+redis.incr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 2</span>
+redis.decr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 1</span>
+
+redis.del <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 2</span></code></pre>
+
+<p>To use a Redis server that isn't at <code>localhost:6379</code>, pass a <code>URI</code> to the client. For example, if you store it in your shell environment:</p>
+
+<pre><code class="language-crystal">redis <span class="o">=</span> <span class="t">Redis</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="t">URI</span>.parse(<span class="t">ENV</span>[<span class="s">&quot;REDIS_URL&quot;</span>]))</code></pre>
+
+<p>To connect via SSL, make sure you use the <code>rediss://</code> URL scheme. If your Redis server requires a password or uses a different database slot than <code>0</code>, make sure you include them in the URL:</p>
+
+<pre><code class="language-crystal">redis <span class="o">=</span> <span class="t">Redis</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="t">URI</span>.parse(<span class="s">&quot;rediss://:my_password@example.com/3&quot;</span>))</code></pre>
+
+<h3><a id="connection-pool" class="anchor" href="#connection-pool">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Connection Pool</h3>
+
+<p>The <code><a href="Redis/Client.html">Redis::Client</a></code> maintains its own connection pool, so there is no need to run your own within your application. When you execute a command on the <code><a href="Redis/Client.html">Redis::Client</a></code>, it is automatically being executed against a connection. When you execute a pipeline or transaction with <code>multi</code>, all commands within that block will automatically be routed to the same connection.</p>
+
+<h2><a id="development" class="anchor" href="#development">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Development</h2>
+
+<p>Make sure you have a Redis or KeyDB server running locally on port 6379.</p>
+
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
+
+<ol><li>Fork it (&lt;https://github.com/jgaskins/redis/fork>)</li><li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li><li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li><li>Push to the branch (<code>git push origin my-new-feature</code>)</li><li>Create a new Pull Request</li></ol>
+
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
+
+<ul><li><a href="https://github.com/jgaskins" target="_blank">Jamie Gaskins</a> - creator and maintainer</li></ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="crystal_docs.project_version" content="master">
+<meta name="crystal_docs.project_name" content="redis">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="redis">
+  <title>Redis::Commands - redis master</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          redis
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="redis/Redis" data-name="redis">
+      <a href="../Redis.html">Redis</a>
+      
+        <ul>
+  
+  <li class=" " data-id="redis/Redis/Client" data-name="redis::client">
+      <a href="../Redis/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" current" data-id="redis/Redis/Commands" data-name="redis::commands">
+      <a href="../Redis/Commands.html">Commands</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Connection" data-name="redis::connection">
+      <a href="../Redis/Connection.html">Connection</a>
+      
+    </li>
+  
+  <li class="parent " data-id="redis/Redis/Future" data-name="redis::future">
+      <a href="../Redis/Future.html">Future</a>
+      
+        <ul>
+  
+  <li class=" " data-id="redis/Redis/Future/NotResolved" data-name="redis::future::notresolved">
+      <a href="../Redis/Future/NotResolved.html">NotResolved</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Parser" data-name="redis::parser">
+      <a href="../Redis/Parser.html">Parser</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Pipeline" data-name="redis::pipeline">
+      <a href="../Redis/Pipeline.html">Pipeline</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Transaction" data-name="redis::transaction">
+      <a href="../Redis/Transaction.html">Transaction</a>
+      
+    </li>
+  
+  <li class=" " data-id="redis/Redis/Value" data-name="redis::value">
+      <a href="../Redis/Value.html">Value</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Redis::Commands
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>All Redis commands are defined in this module. Any paradigm that needs to
+use these commands simply overrides <code><a href="../Redis/Commands.html#run(command)-instance-method">#run</a></code>, which takes a single <code>command</code>
+object, which must be an <code>Enumerable</code>.</p>
+
+<p><span class="flag orange">TODO</span>  Add more Redis commands from https://redis.io/commands</p>
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="direct-including-types" class="anchor" href="#direct-including-types">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct including types
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Redis/Connection.html">Redis::Connection</a></li>
+    
+      <li class="other-type"><a href="../Redis/Pipeline.html">Redis::Pipeline</a></li>
+    
+      <li class="other-type"><a href="../Redis/Transaction.html">Redis::Transaction</a></li>
+    
+  </ul>
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L9" target="_blank">
+        commands.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#brpop(*keys:String,timeout:String)-instance-method" class="signature"><strong>#brpop</strong>(*keys : String, timeout : String)</a>
+        
+          <div class="summary"><p>Remove and return an element from the end of the given list.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#brpop(*keys:String,timeout:Int%7CFloat)-instance-method" class="signature"><strong>#brpop</strong>(*keys : String, timeout : Int | Float)</a>
+        
+          <div class="summary"><p>Remove and return an element from the end of the given list.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#brpop(*keys:String,timeout:Time::Span)-instance-method" class="signature"><strong>#brpop</strong>(*keys : String, timeout : Time::Span)</a>
+        
+          <div class="summary"><p>Remove and return an element from the end of the given list.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decr(key:String)-instance-method" class="signature"><strong>#decr</strong>(key : String)</a>
+        
+          <div class="summary"><p>Atomically decrement and return the integer value for the specified key, creating it if it does not exist</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decrby(key:String,amount:Int%7CString)-instance-method" class="signature"><strong>#decrby</strong>(key : String, amount : Int | String)</a>
+        
+          <div class="summary"><p>Atomically decrement and return the integer value for the specified key by the specified amount, creating it if it does not exist</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#del(*keys:String)-instance-method" class="signature"><strong>#del</strong>(*keys : String)</a>
+        
+          <div class="summary"><p>Delete all specified keys and return the number of keys deleted.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(key:String)-instance-method" class="signature"><strong>#get</strong>(key : String)</a>
+        
+          <div class="summary"><p>Get the value for the specified key</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#incr(key:String)-instance-method" class="signature"><strong>#incr</strong>(key : String)</a>
+        
+          <div class="summary"><p>Atomically increment and return the integer value for the specified key, creating it if it does not exist</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#incrby(key:String,amount:Int%7CString)-instance-method" class="signature"><strong>#incrby</strong>(key : String, amount : Int | String)</a>
+        
+          <div class="summary"><p>Atomically increment and return the integer value for the specified key by the specified amount, creating it if it does not exist</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#keys(pattern=&quot;*&quot;)-instance-method" class="signature"><strong>#keys</strong>(pattern = <span class="s">&quot;*&quot;</span>)</a>
+        
+          <div class="summary"><p>Get the keys whose names follow the specified glob pattern.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#lpush(key,*values)-instance-method" class="signature"><strong>#lpush</strong>(key, *values)</a>
+        
+          <div class="summary"><p>Insert an item at the beginning of a list, returning the number of items in the list after the insert.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rpop(key:String)-instance-method" class="signature"><strong>#rpop</strong>(key : String)</a>
+        
+          <div class="summary"><p>Remove and return an element from the end of the given list.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#rpoplpush(source:String,destination:String)-instance-method" class="signature"><strong>#rpoplpush</strong>(source : String, destination : String)</a>
+        
+          <div class="summary"><p>Atomically remove an item from the end of a list and insert it at the beginning of another.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#run(command)-instance-method" class="signature"><strong>#run</strong>(command)</a>
+        
+          <div class="summary"><p>Execute the given command and return the result from the server.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#set(key:String,value:String,ex=nil,px=nil,nx=false,xx=false,keepttl=false):Nil-instance-method" class="signature"><strong>#set</strong>(key : String, value : String, ex = <span class="n">nil</span>, px = <span class="n">nil</span>, nx = <span class="n">false</span>, xx = <span class="n">false</span>, keepttl = <span class="n">false</span>) : Nil</a>
+        
+          <div class="summary"><p>Set a given key to a given value, optionally specifying time-to-live (TTL).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xadd(key:String,id:String,maxlen=nil,data:Hash(String,String)=Hash(String,String).new)-instance-method" class="signature"><strong>#xadd</strong>(key : String, id : String, maxlen = <span class="n">nil</span>, data : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>)</a>
+        
+          <div class="summary"><p>Append an entry with the specified data to the stream with the given <code>key</code> and gives it the specified <code>id</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xgroup(command:String,key:String,groupname:String)-instance-method" class="signature"><strong>#xgroup</strong>(command : String, key : String, groupname : String)</a>
+        
+          <div class="summary"><p>Run a Redis XGROUP subcommand for a given stream.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xgroup(command:String,key:String,groupname:String,*args:String)-instance-method" class="signature"><strong>#xgroup</strong>(command : String, key : String, groupname : String, *args : String)</a>
+        
+          <div class="summary"><p>Run a Redis XGROUP subcommand for a given stream.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xlen(key:String)-instance-method" class="signature"><strong>#xlen</strong>(key : String)</a>
+        
+          <div class="summary"><p>Return the number of entries in the given stream</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xrange(key:String,startmin,endmax,count=nil)-instance-method" class="signature"><strong>#xrange</strong>(key : String, start min, end max, count = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Return the entries in the given stream between the <code>start</code> and <code>end</code> ids.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#xreadgroup(group:String,consumer:String,count:String%7CInt%7CNil=nil,streams:NamedTuple=NamedTuple.new)-instance-method" class="signature"><strong>#xreadgroup</strong>(group : String, consumer : String, count : String | Int | Nil = <span class="n">nil</span>, streams : NamedTuple = <span class="t">NamedTuple</span>.<span class="k">new</span>)</a>
+        
+          <div class="summary"><p>Execute an <code>XREADGROUP</code> command on the Redis server.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="brpop(*keys:String,timeout:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>brpop</strong>(*keys : String, timeout : String)
+
+        <a class="method-permalink" href="#brpop(*keys:String,timeout:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove and return an element from the end of the given list. If the list
+is empty or the key does not exist, this method waits the specified number
+of seconds for an element to be added to it by another connection. If the
+element <em>is</em> added by another connection within that number of seconds,
+this method will return it immediately. If it <em>is not</em>, then this method
+returns <code>nil</code>.</p>
+
+<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L206" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="brpop(*keys:String,timeout:Int|Float)-instance-method">
+      <div class="signature">
+        
+        def <strong>brpop</strong>(*keys : String, timeout : Int | Float)
+
+        <a class="method-permalink" href="#brpop(*keys:String,timeout:Int%7CFloat)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove and return an element from the end of the given list. If the list
+is empty or the key does not exist, this method waits the specified number
+of seconds for an element to be added to it by another connection. If the
+element <em>is</em> added by another connection within that number of seconds,
+this method will return it immediately. If it <em>is not</em>, then this method
+returns <code>nil</code>.</p>
+
+<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L189" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="brpop(*keys:String,timeout:Time::Span)-instance-method">
+      <div class="signature">
+        
+        def <strong>brpop</strong>(*keys : String, timeout : Time::Span)
+
+        <a class="method-permalink" href="#brpop(*keys:String,timeout:Time::Span)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove and return an element from the end of the given list. If the list
+is empty or the key does not exist, this method waits the specified amount
+of time for an element to be added to it by another connection. If the
+element <em>is</em> added by another connection within that amount of time, this
+method will return it immediately. If it <em>is not</em>, then this method returns
+<code>nil</code>.</p>
+
+<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L173" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decr(key:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>decr</strong>(key : String)
+
+        <a class="method-permalink" href="#decr(key:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Atomically decrement and return the integer value for the specified key,
+creating it if it does not exist</p>
+
+<pre><code>redis.del <span class="s">&quot;counter&quot;</span>
+redis.decr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; -1</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L85" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decrby(key:String,amount:Int|String)-instance-method">
+      <div class="signature">
+        
+        def <strong>decrby</strong>(key : String, amount : Int | String)
+
+        <a class="method-permalink" href="#decrby(key:String,amount:Int%7CString)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Atomically decrement and return the integer value for the specified key by
+the specified amount, creating it if it does not exist</p>
+
+<pre><code>redis.del <span class="s">&quot;counter&quot;</span>
+redis.decrby <span class="s">&quot;counter&quot;</span>, <span class="n">2</span> <span class="c"># =&gt; -2</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L107" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="del(*keys:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>del</strong>(*keys : String)
+
+        <a class="method-permalink" href="#del(*keys:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Delete all specified keys and return the number of keys deleted.</p>
+
+<pre><code>redis.set <span class="s">&quot;foo&quot;</span>
+redis.del <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; 1</span>
+redis.del <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; 0</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L118" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(key:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(key : String)
+
+        <a class="method-permalink" href="#get(key:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get the value for the specified key</p>
+
+<pre><code>redis.set <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>
+redis.get(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; &quot;bar&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L63" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="incr(key:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>incr</strong>(key : String)
+
+        <a class="method-permalink" href="#incr(key:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Atomically increment and return the integer value for the specified key,
+creating it if it does not exist</p>
+
+<pre><code>redis.del <span class="s">&quot;counter&quot;</span>
+redis.incr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 1</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="incrby(key:String,amount:Int|String)-instance-method">
+      <div class="signature">
+        
+        def <strong>incrby</strong>(key : String, amount : Int | String)
+
+        <a class="method-permalink" href="#incrby(key:String,amount:Int%7CString)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Atomically increment and return the integer value for the specified key by
+the specified amount, creating it if it does not exist</p>
+
+<pre><code>redis.del <span class="s">&quot;counter&quot;</span>
+redis.incrby <span class="s">&quot;counter&quot;</span>, <span class="n">2</span> <span class="c"># =&gt; 2</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="keys(pattern=&quot;*&quot;)-instance-method">
+      <div class="signature">
+        
+        def <strong>keys</strong>(pattern = <span class="s">&quot;*&quot;</span>)
+
+        <a class="method-permalink" href="#keys(pattern=&quot;*&quot;)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get the keys whose names follow the specified glob pattern. If a pattern
+is not specified, it will return all keys by default. Be careful when
+using this command on Redis servers with a lot of traffic and millions
+of keys.</p>
+
+<pre><code>redis.keys <span class="c"># =&gt; [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]</span>
+redis.keys(<span class="s">&quot;f*&quot;</span>) <span class="c"># =&gt; [&quot;foo&quot;]</span>
+redis.keys(<span class="s">&quot;b*&quot;</span>) <span class="c"># =&gt; [&quot;bar&quot;, &quot;baz&quot;]</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="lpush(key,*values)-instance-method">
+      <div class="signature">
+        
+        def <strong>lpush</strong>(key, *values)
+
+        <a class="method-permalink" href="#lpush(key,*values)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Insert an item at the beginning of a list, returning the number of items
+in the list after the insert.</p>
+
+<pre><code>redis.del <span class="s">&quot;my-list&quot;</span> <span class="c"># Delete so we know it&#39;s empty</span>
+redis.lpush <span class="s">&quot;my-list&quot;</span>, <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; 2</span>
+redis.lpush <span class="s">&quot;my-list&quot;</span>, <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; 4</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L130" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rpop(key:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>rpop</strong>(key : String)
+
+        <a class="method-permalink" href="#rpop(key:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Remove and return an element from the end of the given list. If the list
+is empty or the key does not exist, this method returns <code>nil</code></p>
+
+<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
+redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L157" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="rpoplpush(source:String,destination:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>rpoplpush</strong>(source : String, destination : String)
+
+        <a class="method-permalink" href="#rpoplpush(source:String,destination:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Atomically remove an item from the end of a list and insert it at the
+beginning of another. Returns that list item. If the first list is empty,
+nothing happens and this method returns <code>nil</code>.</p>
+
+<pre><code>redis.del <span class="s">&quot;foo&quot;</span>
+redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>, <span class="s">&quot;world&quot;</span>
+redis.rpoplpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
+redis.rpoplpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; &quot;world&quot;</span>
+redis.rpoplpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L145" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="run(command)-instance-method">
+      <div class="signature">
+        abstract 
+        def <strong>run</strong>(command)
+
+        <a class="method-permalink" href="#run(command)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Execute the given command and return the result from the server. Commands
+must be an <code>Enumerable</code> and its <code>size</code> method must be re-entrant.</p>
+
+<pre><code>run({<span class="s">&quot;set&quot;</span>, <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>})</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="set(key:String,value:String,ex=nil,px=nil,nx=false,xx=false,keepttl=false):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>set</strong>(key : String, value : String, ex = <span class="n">nil</span>, px = <span class="n">nil</span>, nx = <span class="n">false</span>, xx = <span class="n">false</span>, keepttl = <span class="n">false</span>) : Nil
+
+        <a class="method-permalink" href="#set(key:String,value:String,ex=nil,px=nil,nx=false,xx=false,keepttl=false):Nil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Set a given key to a given value, optionally specifying time-to-live (TTL).</p>
+
+<ul><li><code>ex</code>: TTL in seconds (mnemonic: "ex" = "expiration")</li><li><code>px</code>: TTL in milliseconds</li><li><code>nx</code>: Only set this key if it does not exist (mnemonic: "nx" = it does "not exist")</li><li><code>xx</code>: only set this key if it does exist (mnemonic: "xx" = it "exists exists" — look, I don't make the rules)</li><li><code>keepttl</code>: If there is a TTL already set on the key, retain that TTL instead of overwriting it</li></ul>
+
+<pre><code>redis.set <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>, ex: <span class="n">1</span>
+redis.get(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; &quot;bar&quot;</span>
+sleep <span class="n">1</span>.second
+redis.get(<span class="s">&quot;foo&quot;</span>) <span class="c"># =&gt; nil</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L46" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xadd(key:String,id:String,maxlen=nil,data:Hash(String,String)=Hash(String,String).new)-instance-method">
+      <div class="signature">
+        
+        def <strong>xadd</strong>(key : String, id : String, maxlen = <span class="n">nil</span>, data : Hash(String, String) = <span class="t">Hash</span>(<span class="t">String</span>, <span class="t">String</span>).<span class="k">new</span>)
+
+        <a class="method-permalink" href="#xadd(key:String,id:String,maxlen=nil,data:Hash(String,String)=Hash(String,String).new)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Append an entry with the specified data to the stream with the given <code>key</code>
+and gives it the specified <code>id</code>. If the id is <code>"*"</code>, Redis will assign it
+an id of the form <code>"#{Time.utc.to_unix_ms}-#{autoincrementing_index}"</code>.
+If <code>maxlen</code> is provided, Redis will trim the stream to the specified
+length. If <code>maxlen</code> is of the form <code>~ 1000</code>, Redis will trim it to
+<em>approximately</em> that length, removing entries when it can do so
+efficiently. This method returns the <code>id</code> that Redis stores.</p>
+
+<pre><code>redis.xadd <span class="s">&quot;my-stream&quot;</span>, <span class="s">&quot;*&quot;</span>, {<span class="s">&quot;name&quot;</span> => <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;id&quot;</span> => <span class="t">UUID</span>.random.to_s}</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L244" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xgroup(command:String,key:String,groupname:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>xgroup</strong>(command : String, key : String, groupname : String)
+
+        <a class="method-permalink" href="#xgroup(command:String,key:String,groupname:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Run a Redis XGROUP subcommand for a given stream. See the <a href="https://redis.io/commands/xgroup" target="_blank">XGROUP command in the Redis documentation</a> for more information.</p>
+
+<pre><code>redis.xgroup <span class="s">&quot;DESTROY&quot;</span>, <span class="s">&quot;my-stream&quot;</span>, <span class="s">&quot;my-group&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L277" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xgroup(command:String,key:String,groupname:String,*args:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>xgroup</strong>(command : String, key : String, groupname : String, *args : String)
+
+        <a class="method-permalink" href="#xgroup(command:String,key:String,groupname:String,*args:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Run a Redis XGROUP subcommand for a given stream. See the <a href="https://redis.io/commands/xgroup" target="_blank">XGROUP command in the Redis documentation</a> for more information.</p>
+
+<pre><code>redis.xgroup <span class="s">&quot;CREATE&quot;</span>, <span class="s">&quot;my-stream&quot;</span>, <span class="s">&quot;my-group&quot;</span>, <span class="s">&quot;0&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L286" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xlen(key:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>xlen</strong>(key : String)
+
+        <a class="method-permalink" href="#xlen(key:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Return the number of entries in the given stream</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L257" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xrange(key:String,startmin,endmax,count=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>xrange</strong>(key : String, start min, end max, count = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#xrange(key:String,startmin,endmax,count=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Return the entries in the given stream between the <code>start</code> and <code>end</code> ids.
+If <code>count</code> is provided, Redis will return only that number of entries.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L263" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="xreadgroup(group:String,consumer:String,count:String|Int|Nil=nil,streams:NamedTuple=NamedTuple.new)-instance-method">
+      <div class="signature">
+        
+        def <strong>xreadgroup</strong>(group : String, consumer : String, count : String | Int | Nil = <span class="n">nil</span>, streams : NamedTuple = <span class="t">NamedTuple</span>.<span class="k">new</span>)
+
+        <a class="method-permalink" href="#xreadgroup(group:String,consumer:String,count:String%7CInt%7CNil=nil,streams:NamedTuple=NamedTuple.new)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Execute an <code>XREADGROUP</code> command on the Redis server.</p>
+
+<p><span class="flag orange">TODO</span>  Make the return value of this command easier to work with. Nested
+heterogeneous arrays aren't easy to work with.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/jgaskins/redis/blob/c61277957e9ee8bbb20db97d9033fd240df8e7d0/src/commands.cr#L294" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
