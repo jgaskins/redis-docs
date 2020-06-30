@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 0.34.0">
-<meta name="crystal_docs.project_version" content="master">
+<meta name="crystal_docs.project_version" content="master-dev">
 <meta name="crystal_docs.project_name" content="redis">
 
 
@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="redis">
-  <title>Redis::Pipeline - redis master</title>
+  <title>Redis::Pipeline - redis master-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        master
+        master-dev
       </span>
     </div>
   </div>
@@ -166,13 +166,6 @@
     Defined in:
   </h2>
   
-    
-      <a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/pipeline.cr#L6" target="_blank">
-        pipeline.cr
-      </a>
-    
-    <br/>
-  
 
 
 
@@ -238,8 +231,8 @@
   <h3>Instance methods inherited from module <code><a href="../Redis/Commands.html">Redis::Commands</a></code></h3>
   
   
-    <a href="../Redis/Commands.html#brpop(*keys:String,timeout:String)-instance-method" class="tooltip">
-      <span>brpop(*keys : String, timeout : String)<br/>brpop(*keys : String, timeout : Int | Float)<br/>brpop(*keys : String, timeout : Time::Span)</span>
+    <a href="../Redis/Commands.html#brpop(*keys:String,timeout:Time::Span)-instance-method" class="tooltip">
+      <span>brpop(*keys : String, timeout : Time::Span)<br/>brpop(*keys : String, timeout : Int | Float)<br/>brpop(*keys : String, timeout : String)</span>
     brpop</a>, 
     
   
@@ -283,6 +276,11 @@
     lpush</a>, 
     
   
+    <a href="../Redis/Commands.html#publish(channel:String,message:String)-instance-method" class="tooltip">
+      <span>publish(channel : String, message : String)</span>
+    publish</a>, 
+    
+  
     <a href="../Redis/Commands.html#rpop(key:String)-instance-method" class="tooltip">
       <span>rpop(key : String)</span>
     rpop</a>, 
@@ -298,9 +296,44 @@
     run</a>, 
     
   
+    <a href="../Redis/Commands.html#sadd(key:String,*values:String)-instance-method" class="tooltip">
+      <span>sadd(key : String, *values : String)</span>
+    sadd</a>, 
+    
+  
+    <a href="../Redis/Commands.html#scard(key:String)-instance-method" class="tooltip">
+      <span>scard(key : String)</span>
+    scard</a>, 
+    
+  
+    <a href="../Redis/Commands.html#sdiff(first:String,second:String)-instance-method" class="tooltip">
+      <span>sdiff(first : String, second : String)</span>
+    sdiff</a>, 
+    
+  
     <a href="../Redis/Commands.html#set(key:String,value:String,ex=nil,px=nil,nx=false,xx=false,keepttl=false):Nil-instance-method" class="tooltip">
       <span>set(key : String, value : String, ex = <span class="n">nil</span>, px = <span class="n">nil</span>, nx = <span class="n">false</span>, xx = <span class="n">false</span>, keepttl = <span class="n">false</span>) : Nil</span>
     set</a>, 
+    
+  
+    <a href="../Redis/Commands.html#sinter(first:String,*others:String)-instance-method" class="tooltip">
+      <span>sinter(first : String, *others : String)</span>
+    sinter</a>, 
+    
+  
+    <a href="../Redis/Commands.html#sismember(key:String,value:String)-instance-method" class="tooltip">
+      <span>sismember(key : String, value : String)</span>
+    sismember</a>, 
+    
+  
+    <a href="../Redis/Commands.html#smembers(key:String)-instance-method" class="tooltip">
+      <span>smembers(key : String)</span>
+    smembers</a>, 
+    
+  
+    <a href="../Redis/Commands.html#srem(key:String,*values:String)-instance-method" class="tooltip">
+      <span>srem(key : String, *values : String)</span>
+    srem</a>, 
     
   
     <a href="../Redis/Commands.html#xadd(key:String,id:String,maxlen,data:Hash(String,String))-instance-method" class="tooltip">
@@ -385,8 +418,6 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/pipeline.cr#L12" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -421,8 +452,6 @@ and resolve all <code><a href="../Redis/Future.html">Redis::Future</a></code>s w
       <br/>
       <div>
         
-          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/pipeline.cr#L26" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -442,8 +471,6 @@ command, it gets pushed to the server via this method.</p>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/jgaskins/redis/blob/74386c2f6cae8af127481489dc2d8598d60bb89e/src/pipeline.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
