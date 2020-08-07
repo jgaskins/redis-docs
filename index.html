@@ -165,9 +165,55 @@ redis.decr <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 1<
 
 redis.del <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;counter&quot;</span> <span class="c"># =&gt; 2</span></code></pre>
 
+<h3><a id="pipelined-queries" class="anchor" href="#pipelined-queries">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Pipelined queries</h3>
+
+<p>To mitigate latency with multiple queries whose inputs and outputs are completely independent of each other, you can "pipeline" your queries by sending them all at once before reading them. To do this, you can use the <code>pipeline</code> method:</p>
+
+<pre><code class="language-crystal">redis.pipeline <span class="k">do</span> <span class="o">|</span>pipe<span class="o">|</span>
+  pipe.incr <span class="s">&quot;foo&quot;</span>
+  pipe.set <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;baz&quot;</span>
+  pipe.lpush <span class="s">&quot;my-list&quot;</span>, <span class="s">&quot;my value&quot;</span>
+<span class="k">end</span></code></pre>
+
+<p>The return value of <code>pipeline</code> will be an array containing the values of each of those calls in the order they were sent. So in this case, it might be <code>[1, nil, 2]</code> to match the return values of <code>incr</code>, <code>set</code>, and <code>lpush</code>, respectively.</p>
+
+<h3><a id="transactions" class="anchor" href="#transactions">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Transactions</h3>
+
+<p>The Redis <a href="https://redis.io/commands/multi" target="_blank"><code>MULTI</code> command</a> begins a transaction, so you can use the <code>multi</code> method to execute a transaction against the server:</p>
+
+<pre><code class="language-crystal">redis.multi <span class="k">do</span> <span class="o">|</span>txn<span class="o">|</span>
+  txn.set <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>
+  txn.incr <span class="s">&quot;baz&quot;</span>
+  txn.lpush <span class="s">&quot;my-list&quot;</span>, <span class="s">&quot;my value&quot;</span>
+<span class="k">end</span></code></pre>
+
+<p>The transaction is automatically committed with <a href="https://redis.io/commands/exec" target="_blank"><code>EXEC</code></a> at the end of the block. If an exception occurs within the block, the transaction will be rolled back with <a href="https://redis.io/commands/discard" target="_blank"><code>DISCARD</code></a> before exiting the block.</p>
+
+<p>You may also call <code>txn.discard</code>, which will effectively disable the transaction (all further methods called on the transaction do nothing), but will not exit the block. You will need to exit the block explicitly with <code>break</code> if there are operations within the block that cannot be rolled back, such as sending an email or sending a request to a third-party API.</p>
+
+<p>The reason for this is that the only way to exit a containing block from an inner method in Crystal is to raise an exception, and this library chooses not to use exceptions for flow control.</p>
+
+<h3><a id="beyond-localhost" class="anchor" href="#beyond-localhost">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Beyond <code>localhost</code></h3>
+
 <p>To use a Redis server that isn't at <code>localhost:6379</code>, pass a <code>URI</code> to the client. For example, if you store it in your shell environment:</p>
 
-<pre><code class="language-crystal">redis <span class="o">=</span> <span class="t">Redis</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="t">URI</span>.parse(<span class="t">ENV</span>[<span class="s">&quot;REDIS_URL&quot;</span>]))</code></pre>
+<pre><code class="language-crystal">redis <span class="o">=</span> <span class="t">Redis</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(<span class="t">URI</span>.parse(<span class="t">ENV</span>[<span class="s">&quot;REDIS_URL&quot;</span>]))
+
+<span class="c"># ... or ...</span>
+
+redis <span class="o">=</span> <span class="t">Redis</span><span class="t">::</span><span class="t">Client</span>.from_env(<span class="s">&quot;REDIS_URL&quot;</span>)</code></pre>
 
 <p>To connect via SSL, make sure you use the <code>rediss://</code> URL scheme. If your Redis server requires a password or uses a different database slot than <code>0</code>, make sure you include them in the URL:</p>
 

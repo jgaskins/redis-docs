@@ -245,6 +245,13 @@ object, which must be an <code>Enumerable</code>.</p>
       </li>
     
       <li class="entry-summary">
+        <a href="#exists(*keys:String)-instance-method" class="signature"><strong>#exists</strong>(*keys : String)</a>
+        
+          <div class="summary"><p>Return the number of specified keys that exist</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#get(key:String)-instance-method" class="signature"><strong>#get</strong>(key : String)</a>
         
           <div class="summary"><p>Get the value for the specified key</p></div>
@@ -444,9 +451,14 @@ element <em>is</em> added by another connection within that amount of time, this
 method will return it immediately. If it <em>is not</em>, then this method returns
 <code>nil</code>.</p>
 
-<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>
-redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
-redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;first&quot;</span>
+spawn <span class="k">do</span>
+  sleep <span class="n">100</span>.milliseconds
+  redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;second&quot;</span>
+<span class="k">end</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="n">1</span>.second <span class="c"># =&gt; &quot;first&quot;</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="n">1</span>.second <span class="c"># =&gt; &quot;second&quot; (after 100 milliseconds)</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="n">1</span>.second <span class="c"># =&gt; nil (after 1 second)</span></code></pre>
         </div>
       
       <br/>
@@ -472,9 +484,14 @@ element <em>is</em> added by another connection within that number of seconds,
 this method will return it immediately. If it <em>is not</em>, then this method
 returns <code>nil</code>.</p>
 
-<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>
-redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
-redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;first&quot;</span>
+spawn <span class="k">do</span>
+  sleep <span class="n">100</span>.milliseconds
+  redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;second&quot;</span>
+<span class="k">end</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="n">1</span> <span class="c"># =&gt; &quot;first&quot;</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="n">1</span> <span class="c"># =&gt; &quot;second&quot; (after 100 milliseconds)</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="n">1</span> <span class="c"># =&gt; nil (after 1 second)</span></code></pre>
         </div>
       
       <br/>
@@ -500,9 +517,14 @@ element <em>is</em> added by another connection within that number of seconds,
 this method will return it immediately. If it <em>is not</em>, then this method
 returns <code>nil</code>.</p>
 
-<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;hello&quot;</span>
-redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; &quot;hello&quot;</span>
-redis.rpop <span class="s">&quot;foo&quot;</span> <span class="c"># =&gt; nil</span></code></pre>
+<pre><code>redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;first&quot;</span>
+spawn <span class="k">do</span>
+  sleep <span class="n">100</span>.milliseconds
+  redis.lpush <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;second&quot;</span>
+<span class="k">end</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;1&quot;</span> <span class="c"># =&gt; &quot;first&quot;</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;1&quot;</span> <span class="c"># =&gt; &quot;second&quot; (after 100 milliseconds)</span>
+redis.brpop <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;1&quot;</span> <span class="c"># =&gt; nil (after 1 second)</span></code></pre>
         </div>
       
       <br/>
@@ -569,9 +591,34 @@ redis.decrby <span class="s">&quot;counter&quot;</span>, <span class="n">2</span
           
           <p>Delete all specified keys and return the number of keys deleted.</p>
 
-<pre><code>redis.set <span class="s">&quot;foo&quot;</span>
+<pre><code>redis.set <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;12&quot;</span>
 redis.del <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; 1</span>
 redis.del <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span> <span class="c"># =&gt; 0</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="exists(*keys:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>exists</strong>(*keys : String)
+
+        <a class="method-permalink" href="#exists(*keys:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Return the number of specified keys that exist</p>
+
+<pre><code>redis.exists(<span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>) <span class="c"># =&gt; 0</span>
+redis.set <span class="s">&quot;foo&quot;</span>, <span class="s">&quot;exists now&quot;</span>
+redis.exists(<span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>) <span class="c"># =&gt; 1</span>
+redis.set <span class="s">&quot;bar&quot;</span>, <span class="s">&quot;also exists now&quot;</span>
+redis.exists(<span class="s">&quot;foo&quot;</span>, <span class="s">&quot;bar&quot;</span>) <span class="c"># =&gt; 2</span></code></pre>
         </div>
       
       <br/>
